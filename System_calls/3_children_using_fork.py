@@ -1,37 +1,59 @@
 import os
-import time
 
 class Proc:
-	def __init__(self):
-		pi = os.fork()
+    def __init__(self):
+        n = int(input("Enter n:"))
+        pid = os.fork()
 
-	def o_e(self,n):
-		if n%2 == 0:
-			print("Even")
-		else:
-			print("Odd")
-	
-	def sum(self,n):
-		print("Sum:",(n*(n+1))/2))
+        if pid:
+            status = os.wait()
+            print("Terminated child's process id:", status[0])
 
-	def pal(self,n):
-		if str(n) == str(n)[:-1]:
-			print("Palindrome")
-		else:
-			print("Not Palindrome")
-		
+            pid2 = os.fork()
+            if pid2:
+                status1 = os.wait()
+                print("Terminated child's process id:", status1[0])
+                
+                pid3 = os.fork()
 
-	if pid :
-    		status = os.wait()
-    		print("\nParent process running...")
-    		print("Terminated child's process id:", status[0])
-    		print("Signal number that killed the child process:", status[1])
+                if pid3:
+                    status1 = os.wait()
+                    print("Terminated child's process id:", status1[0])
+                    
+                    print("\n")
+                    print("Parent's PID:", os.getpid())
+                    print("Parent's PPID:",  os.getppid())
+                else:
+                    print("3- Child's PID:", os.getpid())
+                    print("3- Child's PPID:",  os.getppid())
+                    self.pal(n)
 
-	else :
-    		print("Child process running....")
-    		print("Process ID:", os.getpid())
-    		print("Exiting")
-   
+            else:
+                print("2- Child's PID:", os.getpid())
+                print("2- Child's PPID:",  os.getppid())
+                self.sum(n)
+
+                
+        else:
+            print("1- Child's PID:", os.getpid())
+            print("1- Child's PPID:",  os.getppid())
+            self.o_e(n)
+
+
+    def o_e(self, n):
+        if n % 2 == 0:
+            print("Even\n")
+        else:
+            print("Odd\n")
+
+    def sum(self, n):
+        print("Sum:", (n * (n + 1)) / 2,"\n")
+
+    def pal(self, n):
+        if str(n) == str(n)[::-1]:
+            print("Palindrome\n")
+        else:
+            print("Not Palindrome\n")
+
 if __name__ == "__main__":
-	p = Proc()
-	
+    p = Proc()
