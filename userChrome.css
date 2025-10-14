@@ -2,36 +2,15 @@
    Zen Miniplayer – Expand-up overlay, no overlap, compact slider
    ========================== */
 
-/* Miniplayer shell */
-#zen-media-controls-toolbar {
-  border-radius: 12px !important;
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
-}
 
 /* Toolbar items */
 #zen-media-controls-toolbar > toolbaritem {
   background-color: var(--nebula-color-min, rgba(30,34,38,0.16)) !important;
-  backdrop-filter: saturate(1) !important;
 }
 
 #zen-media-progress-bar {
   --zen-primary-color: rgba(255,255,255,1) !important;
-  --zen-colors-border: rgba(100,100,100,0.01) !important;
 }
-
-#zen-media-controls-toolbar .show-on-hover,
-#zen-media-controls-toolbar #zen-media-extra,
-#zen-media-controls-toolbar .zen-media-extra,
-#zen-media-controls-toolbar {
-
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-}
-
-
-
 
 
 /* ------------------------- GENERAL ZEN UI ------------------------- */
@@ -69,34 +48,6 @@ browser {
 :root {
   --zen-colors-tertiary: transparent !important;
   --zen-settings-secondary-background: transparent !important;
-}
-
-
-@-moz-document url-prefix("about:") {
-  table,
-  .action-box {
-    background-color: light-dark(rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.35)) !important;
-    border-radius: 13px !important;
-  }
-}
-
-@-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing) {
-  body, .App{
-    background-color: #00000070 !important;
-  }
-
-  .top-sites-list, .personalizeButtonWrapper{
-    opacity: 0 !important;
-    transition: opacity 0.3s ease-in-out;
-
-    &:hover{
-      opacity: 1 !important;
-    }
-  }
-  
-  .App > div:nth-child(2), .wallpaper{
-    display: none !important;
-  }
 }
 
 
@@ -335,7 +286,7 @@ browser {
 
 :root {
   /* ✨ Glass & Blur */
-  --nebula-glass: blur(32px) saturate(140%);
+  --nebula-glass: blur(15px) saturate(140%);
   --nebula-color-glass: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4));
   
   /* 🖼️ Layout */
